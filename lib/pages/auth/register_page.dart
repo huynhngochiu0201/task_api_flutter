@@ -35,7 +35,6 @@ class _RegisterPageState extends State<RegisterPage> {
   AuthServices authServices = AuthServices();
   final formKey = GlobalKey<FormState>();
 
-  String? avatar;
   File? fileAvatar;
 
   bool isLoading = false;
@@ -106,7 +105,6 @@ class _RegisterPageState extends State<RegisterPage> {
     if (result == null) return;
     fileAvatar = File(result.files.single.path!);
     setState(() {});
-    print('object ${avatar!}');
   }
 
   Future<void> _sendOtp(BuildContext context) async {
@@ -206,9 +204,10 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 20.0),
               TdTextFieldPassword(
                 controller: passwordController,
+                onChanged: (_) => setState(() {}),
                 hintText: 'Password',
                 textInputAction: TextInputAction.next,
-                validator: Validator.password,
+                validator: Validator.password(confirmPasswordController.text),
               ),
               const SizedBox(height: 20.0),
               TdTextFieldPassword(

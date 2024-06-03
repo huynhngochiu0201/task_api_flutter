@@ -10,6 +10,7 @@ class TDSnackBar extends StatefulWidget {
   final int maxLines;
   final int iconRotationAngle;
   final List<BoxShadow> boxShadow;
+
   final BorderRadius borderRadius;
   final double iconPositionTop;
   final double iconPositionLeft;
